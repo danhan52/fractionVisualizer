@@ -1,10 +1,3 @@
-
-# This is the user-interface definition of a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
-#
-
 library(shiny)
 
 shinyUI(fluidPage(
@@ -26,7 +19,15 @@ shinyUI(fluidPage(
 
     # Show a plot of the generated distribution
     mainPanel(
-      plotOutput("eFrac", width = "400px", height = "500px")
+      tabsetPanel(
+        tabPanel("Equivalent fractions",
+                 htmlOutput("eFracTxt"),
+                 plotOutput("eFrac", width = "600px", height = "500px")),
+        tabPanel("Improper fractions",
+                 htmlOutput("iFracTxt"),
+                 plotOutput("iFrac", width = "600px", height = "500px")),
+        id = "fracType"
+      )
     )
   )
 ))
